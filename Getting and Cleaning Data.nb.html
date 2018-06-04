@@ -175,10 +175,145 @@ $(document).ready(function () {
 <!-- rnb-text-begin -->
 <div id="week-one" class="section level3">
 <h3>Week One</h3>
+<div id="content" class="section level4">
+<h4>Content</h4>
+<div id="data-collection" class="section level5">
+<h5>Data collection</h5>
+<ul>
+<li>Raw files (.csv,.xlsx)</li>
+<li>Databases (mySQL)</li>
+<li>APIs</li>
+<li>Data formats</li>
+</ul>
+<p>Flat files (.csv,.txt) XML JSON Making data tidy</p>
+</div>
+<div id="distributing-data" class="section level5">
+<h5>Distributing data</h5>
+</div>
+<div id="scripting-for-data-cleaning" class="section level5">
+<h5>Scripting for data cleaning</h5>
+</div>
+</div>
+<div id="components-of-tidy-data" class="section level4">
+<h4>Components of Tidy Data</h4>
+<p>Measures of tidy data:</p>
+<ul>
+<li>Each variable should be one column</li>
+<li>Each row should be one observation</li>
+<li>There should be one table for each “kind” of variable, i.e. location or general data type</li>
+<li>If you have more than one table they should be able to be linked</li>
+</ul>
+<div id="the-code-book" class="section level5">
+<h5>The code book</h5>
+<p>This provides information about the variables including units, information about summary choices you have made, and information about the experimental design.</p>
+<p>These are commonly done in a word/txt file There should be a section called study design and a section called code-book.</p>
+</div>
+<div id="the-instruction-list" class="section level5">
+<h5>The instruction list</h5>
+<p>This would usually be in an R or phython script. The import is the raw data, the output is the processed data. There should be no parameters to the script, this should include no changes to be made by the user. Sometimes you may need to use text instructions including as much detail as possible (i.e. version number, parameters).</p>
+</div>
+</div>
+<div id="working-directory" class="section level4">
+<h4>Working directory</h4>
+<p>Commands can be relative or absolute:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2V0d2QoKVxuXG5gYGAifQ== -->
+<pre class="r"><code>getwd()
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiRDovRG9jdW1lbnRzL0RvY3VtZW50cy9Qcm9mZXNzaW9uYWwvQ291cnNlcy8zLiBHZXR0aW5nIGFuZCBDbGVhbmluZyBEYXRhL0dldHRpbmcgYW5kIENsZWFuaW5nIERhdGEgUlwiXG4ifQ== -->
+<pre><code>[1] &quot;D:/Documents/Documents/Professional/Courses/3. Getting and Cleaning Data/Getting and Cleaning Data R&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>To check if a directory exists use:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmlsZS5leGlzdHMoXCJkaXJlY3RvcnlOYW1lXCIpXG5cbmBgYCJ9 -->
+<pre class="r"><code>file.exists(&quot;directoryName&quot;)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFRSVUVcbiJ9 -->
+<pre><code>[1] TRUE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="getting-data-from-the-internet" class="section level4">
+<h4>Getting data from the internet</h4>
+<p>To download data from the internet use:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZG93bmxvYWQuZmlsZSgpXG5cbmBgYCJ9 -->
+<pre class="r"><code>download.file()
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZG93bmxvYWQuZmlsZSgpIDogXG4gIGFyZ3VtZW50IFwiZGVzdGZpbGVcIiBpcyBtaXNzaW5nLCB3aXRoIG5vIGRlZmF1bHRcbiJ9 -->
+<pre><code>Error in download.file() : 
+  argument &quot;destfile&quot; is missing, with no default</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The import parameters include:</p>
+<ul>
+<li>the URL</li>
+<li>the destfile (the destination file)</li>
+<li>the method</li>
+</ul>
+<p>If the website is https then you need to use method:“curl” on a mac. It is usefull to store the date() as a variable to keep a record of this.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0ZSgpXG5gYGAifQ== -->
+<pre class="r"><code>date()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="reading-csv-files" class="section level4">
+<h4>Reading CSV files</h4>
+<p>Use the xlsx package, unless you need to do heaps of anlaysis then use the XLConnect package. XLConnect vignette is a good place for starting explanation.</p>
+</div>
+<div id="reading-xml" class="section level4">
+<h4>Reading XML</h4>
+<p>Structured &amp; frequently used. There are two parts, the markup (label) and content.</p>
+<p>Tags - correspond to general labels (i.e. start, end, empty).</p>
+<p>Elements are a specific example of tags.</p>
+<p>Attributes are components of the label.</p>
+<p>Check out the XML wikipedia entry.</p>
+<p>Use the XML package. Give it a URL.</p>
+<p>xmlTreeParse(fileURL,useInternal=TRUE).</p>
+<p>Get the rootNode for the wrapper for the entire document.</p>
+<p>xmlName(rootNode) will get the name.</p>
+<p>To access specific access you can use rootNode[[1]] for the first element or rootNode[[1][1]] to take the first element of the first element (one step down).</p>
+<p>xmlSApply(rootNode, xmlValue) - xmlSApply allows you to programatically extract parts of a file.</p>
+<p>You can get specific components using the XPath language. Look at stat.berkley.edu/~statcur/Workshop2/Presentation/XML.pdf:</p>
+<ul>
+<li>/node - top level node</li>
+<li>//node - Node at any level</li>
+<li>node<span class="citation">[@attr-name]</span> Node with an attribute name</li>
+<li>node<span class="citation">[@attr-name = specific name]</span> Node with a value in the attribute name</li>
+</ul>
+<p>Use htmlTreeParse() rathern than xmlTreePass() for http</p>
+</div>
+<div id="json" class="section level4">
+<h4>JSON</h4>
+<p>Java Script Object Notation. Data is stored as:</p>
+<ul>
+<li>Numbers</li>
+<li>Strings</li>
+<li>Boolean</li>
+<li>Array (ordered, comma separated enclosed in square brackets)</li>
+<li>Object (unordered, comma separated collection of key:value pairs in curley brackets)</li>
+</ul>
+<p>Take a look at the JSON wikipedia..</p>
+<p>toJSON will change a df to JSON which is useful for passing back to an API.</p>
+<p>fromJSON can pass back a JSON formatted dataframe.</p>
 <!-- rnb-text-end -->
 </div>
+</div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkdldHRpbmcgYW5kIENsZWFuaW5nIEluZm9ybWF0aW9uIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KIyMjIFdlZWsgT25lDQoNCg0KDQoNCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkdldHRpbmcgYW5kIENsZWFuaW5nIEluZm9ybWF0aW9uIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KIyMjIFdlZWsgT25lDQoNCiMjIyMgQ29udGVudA0KIyMjIyMgRGF0YSBjb2xsZWN0aW9uDQoNCiogUmF3IGZpbGVzICguY3N2LC54bHN4KQ0KKiBEYXRhYmFzZXMgKG15U1FMKQ0KKiBBUElzDQoqIERhdGEgZm9ybWF0cw0KDQpGbGF0IGZpbGVzICguY3N2LC50eHQpDQpYTUwNCkpTT04NCk1ha2luZyBkYXRhIHRpZHkNCg0KIyMjIyMgRGlzdHJpYnV0aW5nIGRhdGENCg0KIyMjIyMgU2NyaXB0aW5nIGZvciBkYXRhIGNsZWFuaW5nDQoNCg0KIyMjIyBDb21wb25lbnRzIG9mIFRpZHkgRGF0YQ0KDQpNZWFzdXJlcyBvZiB0aWR5IGRhdGE6DQoNCiogRWFjaCB2YXJpYWJsZSBzaG91bGQgYmUgb25lIGNvbHVtbg0KKiBFYWNoIHJvdyBzaG91bGQgYmUgb25lIG9ic2VydmF0aW9uDQoqIFRoZXJlIHNob3VsZCBiZSBvbmUgdGFibGUgZm9yIGVhY2ggImtpbmQiIG9mIHZhcmlhYmxlLCBpLmUuIGxvY2F0aW9uIG9yIGdlbmVyYWwgZGF0YSB0eXBlDQoqIElmIHlvdSBoYXZlIG1vcmUgdGhhbiBvbmUgdGFibGUgdGhleSBzaG91bGQgYmUgYWJsZSB0byBiZSBsaW5rZWQNCg0KIyMjIyMgVGhlIGNvZGUgYm9vaw0KDQpUaGlzIHByb3ZpZGVzIGluZm9ybWF0aW9uIGFib3V0IHRoZSB2YXJpYWJsZXMgaW5jbHVkaW5nIHVuaXRzLCBpbmZvcm1hdGlvbiBhYm91dCBzdW1tYXJ5IGNob2ljZXMgeW91IGhhdmUgbWFkZSwgYW5kIGluZm9ybWF0aW9uIGFib3V0IHRoZSBleHBlcmltZW50YWwgZGVzaWduLg0KDQpUaGVzZSBhcmUgY29tbW9ubHkgZG9uZSBpbiBhIHdvcmQvdHh0IGZpbGUNClRoZXJlIHNob3VsZCBiZSBhIHNlY3Rpb24gY2FsbGVkIHN0dWR5IGRlc2lnbiBhbmQgYSBzZWN0aW9uIGNhbGxlZCBjb2RlLWJvb2suDQoNCiMjIyMjIFRoZSBpbnN0cnVjdGlvbiBsaXN0DQoNClRoaXMgd291bGQgdXN1YWxseSBiZSBpbiBhbiBSIG9yIHBoeXRob24gc2NyaXB0LiBUaGUgaW1wb3J0IGlzIHRoZSByYXcgZGF0YSwgdGhlIG91dHB1dCBpcyB0aGUgcHJvY2Vzc2VkIGRhdGEuIFRoZXJlIHNob3VsZCBiZSBubyBwYXJhbWV0ZXJzIHRvIHRoZSBzY3JpcHQsIHRoaXMgc2hvdWxkIGluY2x1ZGUgbm8gY2hhbmdlcyB0byBiZSBtYWRlIGJ5IHRoZSB1c2VyLiBTb21ldGltZXMgeW91IG1heSBuZWVkIHRvIHVzZSB0ZXh0IGluc3RydWN0aW9ucyBpbmNsdWRpbmcgYXMgbXVjaCBkZXRhaWwgYXMgcG9zc2libGUgKGkuZS4gdmVyc2lvbiBudW1iZXIsIHBhcmFtZXRlcnMpLg0KDQojIyMjIFdvcmtpbmcgZGlyZWN0b3J5DQpDb21tYW5kcyBjYW4gYmUgcmVsYXRpdmUgb3IgYWJzb2x1dGU6DQpgYGB7cn0NCmdldHdkKCkNCnNldHdkKCIuLi8iKQ0Kc2V0d2QoIi4vTmV3IGZvbGRlciIpDQpgYGANCg0KVG8gY2hlY2sgaWYgYSBkaXJlY3RvcnkgZXhpc3RzIHVzZToNCmBgYHtyfQ0KZmlsZS5leGlzdHMoImRpcmVjdG9yeU5hbWUiKQ0KZGlyLmNyZWF0ZSgiZGlyZWN0b3J5TmFtZSIpDQpgYGANCg0KIyMjIyBHZXR0aW5nIGRhdGEgZnJvbSB0aGUgaW50ZXJuZXQNClRvIGRvd25sb2FkIGRhdGEgZnJvbSB0aGUgaW50ZXJuZXQgdXNlOg0KYGBge3J9DQpkb3dubG9hZC5maWxlKCkNCmBgYA0KVGhlIGltcG9ydCBwYXJhbWV0ZXJzIGluY2x1ZGU6DQoNCiogdGhlIFVSTA0KKiB0aGUgZGVzdGZpbGUgKHRoZSBkZXN0aW5hdGlvbiBmaWxlKQ0KKiB0aGUgbWV0aG9kDQoNCklmIHRoZSB3ZWJzaXRlIGlzIGh0dHBzIHRoZW4geW91IG5lZWQgdG8gdXNlIG1ldGhvZDoiY3VybCIgb24gYSBtYWMuDQpJdCBpcyB1c2VmdWxsIHRvIHN0b3JlIHRoZSBkYXRlKCkgYXMgYSB2YXJpYWJsZSB0byBrZWVwIGEgcmVjb3JkIG9mIHRoaXMuDQpgYGB7cn0NCmRhdGUoKQ0KYGBgDQoNCg0KIyMjIyBSZWFkaW5nIENTViBmaWxlcw0KDQpVc2UgdGhlIHhsc3ggcGFja2FnZSwgdW5sZXNzIHlvdSBuZWVkIHRvIGRvIGhlYXBzIG9mIGFubGF5c2lzIHRoZW4gdXNlIHRoZSBYTENvbm5lY3QgcGFja2FnZS4gWExDb25uZWN0IHZpZ25ldHRlIGlzIGEgZ29vZCBwbGFjZSBmb3Igc3RhcnRpbmcgZXhwbGFuYXRpb24uDQoNCiMjIyMgUmVhZGluZyBYTUwNCg0KU3RydWN0dXJlZCAmIGZyZXF1ZW50bHkgdXNlZC4gVGhlcmUgYXJlIHR3byBwYXJ0cywgdGhlIG1hcmt1cCAobGFiZWwpIGFuZCBjb250ZW50Lg0KDQpUYWdzIC0gY29ycmVzcG9uZCB0byBnZW5lcmFsIGxhYmVscyAoaS5lLiBzdGFydCwgZW5kLCBlbXB0eSkuDQoNCkVsZW1lbnRzIGFyZSBhIHNwZWNpZmljIGV4YW1wbGUgb2YgdGFncy4NCg0KQXR0cmlidXRlcyBhcmUgY29tcG9uZW50cyBvZiB0aGUgbGFiZWwuDQoNCkNoZWNrIG91dCB0aGUgWE1MIHdpa2lwZWRpYSBlbnRyeS4NCg0KVXNlIHRoZSBYTUwgcGFja2FnZS4gR2l2ZSBpdCBhIFVSTC4NCg0KeG1sVHJlZVBhcnNlKGZpbGVVUkwsdXNlSW50ZXJuYWw9VFJVRSkuDQoNCkdldCB0aGUgcm9vdE5vZGUgZm9yIHRoZSB3cmFwcGVyIGZvciB0aGUgZW50aXJlIGRvY3VtZW50Lg0KDQp4bWxOYW1lKHJvb3ROb2RlKSB3aWxsIGdldCB0aGUgbmFtZS4NCg0KVG8gYWNjZXNzIHNwZWNpZmljIGFjY2VzcyB5b3UgY2FuIHVzZSByb290Tm9kZVtbMV1dIGZvciB0aGUgZmlyc3QgZWxlbWVudCBvciByb290Tm9kZVtbMV1bMV1dIHRvIHRha2UgdGhlIGZpcnN0IGVsZW1lbnQgb2YgdGhlIGZpcnN0IGVsZW1lbnQgKG9uZSBzdGVwIGRvd24pLiANCg0KeG1sU0FwcGx5KHJvb3ROb2RlLCB4bWxWYWx1ZSkgLSB4bWxTQXBwbHkgYWxsb3dzIHlvdSB0byBwcm9ncmFtYXRpY2FsbHkgZXh0cmFjdCBwYXJ0cyBvZiBhIGZpbGUuDQoNCllvdSBjYW4gZ2V0IHNwZWNpZmljIGNvbXBvbmVudHMgdXNpbmcgdGhlIFhQYXRoIGxhbmd1YWdlLiBMb29rIGF0IHN0YXQuYmVya2xleS5lZHUvfnN0YXRjdXIvV29ya3Nob3AyL1ByZXNlbnRhdGlvbi9YTUwucGRmOg0KDQoqIC9ub2RlIC0gdG9wIGxldmVsIG5vZGUNCiogLy9ub2RlIC0gTm9kZSBhdCBhbnkgbGV2ZWwNCiogbm9kZVtAYXR0ci1uYW1lXSBOb2RlIHdpdGggYW4gYXR0cmlidXRlIG5hbWUNCiogbm9kZVtAYXR0ci1uYW1lID0gc3BlY2lmaWMgbmFtZV0gTm9kZSB3aXRoIGEgdmFsdWUgaW4gdGhlIGF0dHJpYnV0ZSBuYW1lDQoNClVzZSBodG1sVHJlZVBhcnNlKCkgcmF0aGVybiB0aGFuIHhtbFRyZWVQYXNzKCkgZm9yIGh0dHANCg0KIyMjIyBKU09ODQoNCkphdmEgU2NyaXB0IE9iamVjdCBOb3RhdGlvbi4gDQpEYXRhIGlzIHN0b3JlZCBhczoNCg0KKiBOdW1iZXJzDQoqIFN0cmluZ3MNCiogQm9vbGVhbg0KKiBBcnJheSAob3JkZXJlZCwgY29tbWEgc2VwYXJhdGVkIGVuY2xvc2VkIGluIHNxdWFyZSBicmFja2V0cykNCiogT2JqZWN0ICh1bm9yZGVyZWQsIGNvbW1hIHNlcGFyYXRlZCBjb2xsZWN0aW9uIG9mIGtleTp2YWx1ZSBwYWlycyBpbiBjdXJsZXkgYnJhY2tldHMpDQoNClRha2UgYSBsb29rIGF0IHRoZSBKU09OIHdpa2lwZWRpYS4uDQoNCnRvSlNPTiB3aWxsIGNoYW5nZSBhIGRmIHRvIEpTT04gd2hpY2ggaXMgdXNlZnVsIGZvciBwYXNzaW5nIGJhY2sgdG8gYW4gQVBJLg0KDQpmcm9tSlNPTiBjYW4gcGFzcyBiYWNrIGEgSlNPTiBmb3JtYXR0ZWQgZGF0YWZyYW1lLg0KDQoNCg0K</div>
 
 
 

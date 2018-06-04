@@ -5,7 +5,135 @@ output: html_notebook
 
 ### Week One
 
+#### Content
+##### Data collection
+
+* Raw files (.csv,.xlsx)
+* Databases (mySQL)
+* APIs
+* Data formats
+
+Flat files (.csv,.txt)
+XML
+JSON
+Making data tidy
+
+##### Distributing data
+
+##### Scripting for data cleaning
 
 
+#### Components of Tidy Data
+
+Measures of tidy data:
+
+* Each variable should be one column
+* Each row should be one observation
+* There should be one table for each "kind" of variable, i.e. location or general data type
+* If you have more than one table they should be able to be linked
+
+##### The code book
+
+This provides information about the variables including units, information about summary choices you have made, and information about the experimental design.
+
+These are commonly done in a word/txt file
+There should be a section called study design and a section called code-book.
+
+##### The instruction list
+
+This would usually be in an R or phython script. The import is the raw data, the output is the processed data. There should be no parameters to the script, this should include no changes to be made by the user. Sometimes you may need to use text instructions including as much detail as possible (i.e. version number, parameters).
+
+#### Working directory
+Commands can be relative or absolute:
+```{r}
+getwd()
+setwd("../")
+setwd("./New folder")
+```
+
+To check if a directory exists use:
+```{r}
+file.exists("directoryName")
+dir.create("directoryName")
+```
+
+#### Getting data from the internet
+To download data from the internet use:
+```{r}
+download.file()
+```
+The import parameters include:
+
+* the URL
+* the destfile (the destination file)
+* the method
+
+If the website is https then you need to use method:"curl" on a mac.
+It is usefull to store the date() as a variable to keep a record of this.
+```{r}
+date()
+```
+
+
+#### Reading CSV files
+
+Use the xlsx package, unless you need to do heaps of anlaysis then use the XLConnect package. XLConnect vignette is a good place for starting explanation.
+
+#### Reading XML
+
+Structured & frequently used. There are two parts, the markup (label) and content.
+
+Tags - correspond to general labels (i.e. start, end, empty).
+
+Elements are a specific example of tags.
+
+Attributes are components of the label.
+
+Check out the XML wikipedia entry.
+
+Use the XML package. Give it a URL.
+
+xmlTreeParse(fileURL,useInternal=TRUE).
+
+Get the rootNode for the wrapper for the entire document.
+
+xmlName(rootNode) will get the name.
+
+To access specific access you can use rootNode[[1]] for the first element or rootNode[[1][1]] to take the first element of the first element (one step down). 
+
+xmlSApply(rootNode, xmlValue) - xmlSApply allows you to programatically extract parts of a file.
+
+You can get specific components using the XPath language. Look at stat.berkley.edu/~statcur/Workshop2/Presentation/XML.pdf:
+
+* /node - top level node
+* //node - Node at any level
+* node[@attr-name] Node with an attribute name
+* node[@attr-name = specific name] Node with a value in the attribute name
+
+Use htmlTreeParse() rathern than xmlTreePass() for http
+
+#### JSON
+
+Java Script Object Notation. 
+Data is stored as:
+
+* Numbers
+* Strings
+* Boolean
+* Array (ordered, comma separated enclosed in square brackets)
+* Object (unordered, comma separated collection of key:value pairs in curley brackets)
+
+Take a look at the JSON wikipedia..
+
+toJSON will change a df to JSON which is useful for passing back to an API.
+
+fromJSON can pass back a JSON formatted dataframe.
+
+#### Datatables
+
+tables() will show all of the tables in memory
+```{r}
+install.packages("data.tables")
+```
 
 
