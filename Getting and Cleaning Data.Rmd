@@ -75,7 +75,7 @@ date()
 ```
 
 
-#### Reading CSV files
+#### Reading xlsx files
 
 Use the xlsx package, unless you need to do heaps of anlaysis then use the XLConnect package. XLConnect vignette is a good place for starting explanation.
 
@@ -132,8 +132,12 @@ fromJSON can pass back a JSON formatted dataframe.
 #### Datatables
 
 tables() will show all of the tables in memory
+
+
 ```{r}
 install.packages("data.tables")
 ```
 
+### Week two
+This week uses MySQL. There's documentation on the Wikipedia page. 
 
